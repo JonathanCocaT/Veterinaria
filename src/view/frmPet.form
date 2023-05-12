@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[600, 450]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -223,7 +220,6 @@
                                           <Component id="BreedCat" min="-2" pref="78" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="CbBreedCat" min="-2" pref="136" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="SepaBreedCat" alignment="0" pref="334" max="32767" attributes="0"/>
                                   </Group>
@@ -233,13 +229,13 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="agregar" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="AgregarCat" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="modificar" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="BuscarCat" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="eliminar" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="EliminaCat" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="nuevo" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="EditarCat" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -306,10 +302,10 @@
                           </Group>
                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="agregar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="modificar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="eliminar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="nuevo" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="AgregarCat" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="BuscarCat" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="EliminaCat" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="EditarCat" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="92" max="32767" attributes="0"/>
                       </Group>
@@ -402,14 +398,18 @@
                       <Font name="Segoe UI" size="12" style="2"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Sano"/>
-                        <StringItem index="1" value="Enfermo"/>
-                        <StringItem index="2" value="Critico"/>
-                        <StringItem index="3" value="Muerto"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Seleccionar"/>
+                        <StringItem index="1" value="Sano"/>
+                        <StringItem index="2" value="Enfermo"/>
+                        <StringItem index="3" value="Critico"/>
+                        <StringItem index="4" value="Muerto"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CbHealthStatusCatActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -435,13 +435,14 @@
                       <Font name="Segoe UI" size="12" style="2"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="6">
-                        <StringItem index="0" value="Siam&#xe9;s"/>
-                        <StringItem index="1" value="Persa"/>
-                        <StringItem index="2" value="Bengal&#xed;"/>
-                        <StringItem index="3" value="Abisinio"/>
-                        <StringItem index="4" value="Azul RusoRagDoll"/>
-                        <StringItem index="5" value="Javan&#xe8;s"/>
+                      <StringArray count="7">
+                        <StringItem index="0" value="Seleccionar"/>
+                        <StringItem index="1" value="Siam&#xe9;s"/>
+                        <StringItem index="2" value="Persa"/>
+                        <StringItem index="3" value="Bengal&#xed;"/>
+                        <StringItem index="4" value="Abisinio"/>
+                        <StringItem index="5" value="Azul RusoRagDoll"/>
+                        <StringItem index="6" value="Javan&#xe8;s"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -456,7 +457,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="agregar">
+                <Component class="javax.swing.JButton" name="AgregarCat">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -473,12 +474,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregarMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregarMouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarCatActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="modificar">
+                <Component class="javax.swing.JButton" name="BuscarCat">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -489,18 +488,16 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="MODIFICAR"/>
+                    <Property name="text" type="java.lang.String" value="BUSCAR"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificarMouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarCatActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="eliminar">
+                <Component class="javax.swing.JButton" name="EliminaCat">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -517,12 +514,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminarMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminarMouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminaCatActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="nuevo">
+                <Component class="javax.swing.JButton" name="EditarCat">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -533,15 +528,13 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="NUEVO"/>
+                    <Property name="text" type="java.lang.String" value="EDITAR"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nuevoMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nuevoMouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarCatActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -565,13 +558,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="agregar1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="AgregarDog" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="modificar1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="BuscarDog" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="eliminar1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="EliminarDog" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="nuevo1" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="EditarDog" min="-2" pref="130" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="28" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -711,10 +704,10 @@
                           </Group>
                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="agregar1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="modificar1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="eliminar1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="nuevo1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="AgregarDog" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="BuscarDog" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="EliminarDog" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="EditarDog" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="92" max="32767" attributes="0"/>
                       </Group>
@@ -827,11 +820,12 @@
                       <Font name="Segoe UI" size="12" style="2"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Sano"/>
-                        <StringItem index="1" value="Enfermo"/>
-                        <StringItem index="2" value="Critico"/>
-                        <StringItem index="3" value="Muerto"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Seleccionar"/>
+                        <StringItem index="1" value="Sano"/>
+                        <StringItem index="2" value="Enfermo"/>
+                        <StringItem index="3" value="Critico"/>
+                        <StringItem index="4" value="Muerto"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -860,18 +854,19 @@
                       <Font name="Segoe UI" size="12" style="2"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="11">
-                        <StringItem index="0" value="Affenpinscher"/>
-                        <StringItem index="1" value="Afgano"/>
-                        <StringItem index="2" value="Akita japon&#xe9;s"/>
-                        <StringItem index="3" value="Basenji"/>
-                        <StringItem index="4" value="Basset Azul de Gascu&#xf1;a"/>
-                        <StringItem index="5" value="Galgo italiano"/>
-                        <StringItem index="6" value="Shiba Inu"/>
-                        <StringItem index="7" value="Pomeriana"/>
-                        <StringItem index="8" value="Cocker Spaniel"/>
-                        <StringItem index="9" value="Bulldog franc&#xe9;s"/>
-                        <StringItem index="10" value="Beagle"/>
+                      <StringArray count="12">
+                        <StringItem index="0" value="Seleccionar"/>
+                        <StringItem index="1" value="Affenpinscher"/>
+                        <StringItem index="2" value="Afgano"/>
+                        <StringItem index="3" value="Akita japon&#xe9;s"/>
+                        <StringItem index="4" value="Basenji"/>
+                        <StringItem index="5" value="Basset Azul de Gascu&#xf1;a"/>
+                        <StringItem index="6" value="Galgo italiano"/>
+                        <StringItem index="7" value="Shiba Inu"/>
+                        <StringItem index="8" value="Pomeriana"/>
+                        <StringItem index="9" value="Cocker Spaniel"/>
+                        <StringItem index="10" value="Bulldog franc&#xe9;s"/>
+                        <StringItem index="11" value="Beagle"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -886,7 +881,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="agregar1">
+                <Component class="javax.swing.JButton" name="AgregarDog">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -903,12 +898,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar1MouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="agregar1MouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregar1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarDogActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="modificar1">
+                <Component class="javax.swing.JButton" name="BuscarDog">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -919,18 +912,16 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="MODIFICAR"/>
+                    <Property name="text" type="java.lang.String" value="BUSCAR"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificar1MouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="modificar1MouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificar1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarDogActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="eliminar1">
+                <Component class="javax.swing.JButton" name="EliminarDog">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -947,12 +938,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar1MouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="eliminar1MouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminar1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarDogActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="nuevo1">
+                <Component class="javax.swing.JButton" name="EditarDog">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -963,15 +952,13 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="NUEVO"/>
+                    <Property name="text" type="java.lang.String" value="EDITAR"/>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nuevo1MouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nuevo1MouseExited"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevo1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarDogActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="ChekPedigreeDog">
@@ -981,9 +968,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Pedigree"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChekPedigreeDogActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
