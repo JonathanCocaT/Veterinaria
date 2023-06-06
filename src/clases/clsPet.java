@@ -8,9 +8,9 @@ public class clsPet implements IAnimal,IVertebrate {
     private String name;
     private int born_year;
     private String color;
-    private String  healthStatus;   
-    
-    
+    private String  healthStatus;
+
+
     /*metodos */
     public void eat(){
         System.out.println(this.getName()+" esta comiendo");
@@ -31,12 +31,13 @@ public class clsPet implements IAnimal,IVertebrate {
     }
 
     /*constructor con parametros*/
-    public clsPet(String code, String name, int born_year, String color, String healthStatus) {
+    public clsPet(String code, String name, int born_year, String color, String healthStatus,String breed) {
         this.code = code;
         this.name = name;
         this.born_year = born_year;
         this.color = color;
         this.healthStatus = healthStatus;
+        this.breed = breed;
     }
 
     /*getters and setters*/
@@ -79,6 +80,15 @@ public class clsPet implements IAnimal,IVertebrate {
     public void setHealthStatus(String healthStatus) {
         this.healthStatus = healthStatus;
     }
+    
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+    private String breed;
 
     @Override
     public String getAnimalType() {

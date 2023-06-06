@@ -5,9 +5,13 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import clases.*;
 import javax.swing.DefaultListModel;
+import controller.*;
+import java.awt.HeadlessException;
 
 
 public class frmPet extends javax.swing.JFrame {
+    
+    ctlPet ctlPet;
     LinkedList<clsDog>dogObjectList = new LinkedList<>();
      LinkedList<clsCat>catObjectList = new LinkedList<>();
 
@@ -16,6 +20,7 @@ public class frmPet extends javax.swing.JFrame {
      */
     public frmPet() {
         initComponents();
+        this.ctlPet = new ctlPet();
     }
 
     @SuppressWarnings("unchecked")
@@ -422,6 +427,9 @@ public class frmPet extends javax.swing.JFrame {
         EditarDog.setForeground(new java.awt.Color(255, 255, 255));
         EditarDog.setText("EDITAR");
         EditarDog.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        EditarDog.setMaximumSize(new java.awt.Dimension(80, 23));
+        EditarDog.setMinimumSize(new java.awt.Dimension(80, 23));
+        EditarDog.setPreferredSize(new java.awt.Dimension(80, 23));
         EditarDog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditarDogActionPerformed(evt);
@@ -625,7 +633,7 @@ public class frmPet extends javax.swing.JFrame {
                         this.FillJListCat();
                         JOptionPane.showMessageDialog(this,"Registro Guardado");
             }
-        }catch(Exception e){
+        }catch(HeadlessException e){
             JOptionPane.showMessageDialog(this,"Digite un valor valido");
         }
         NuevoCat();
@@ -635,19 +643,13 @@ public class frmPet extends javax.swing.JFrame {
                 try{
     
             String code=txtcodecat.getText();
-
+            clsCat cat= (clsCat) ctlPet.searchPet(code, "Gato");
             if (code.equals("")){
                 
                 //JOptionPane.showMessageDialog(this, "Por favor ingrese un codigo");
 
             }else{
-                
-                for (clsCat cat : catObjectList){
-                
-                    if(cat.getCode().equals(code)){
-                    
-                        JOptionPane.showMessageDialog(this, "Bienvenido "+cat.getName());
-                        
+          
                         txtNamecat.setText(cat.getName());
                         txtColorcat.setText(cat.getColor());
                         txtBronYearCat.setText (Integer.toString(cat.getBorn_year()));
@@ -655,13 +657,11 @@ public class frmPet extends javax.swing.JFrame {
                         CbHealthStatusCat.setSelectedItem(cat.getHealthStatus());
 
                     }
-                
-                }
-            }
-        }catch(Exception e){
+
+        }catch(HeadlessException e){
         
         JOptionPane.showMessageDialog(this, "Digite un valor valido");
-            
+           
         }
     }//GEN-LAST:event_BuscarCatActionPerformed
 
@@ -693,7 +693,7 @@ public class frmPet extends javax.swing.JFrame {
             }
                 }
             }
-        }catch(Exception e){
+        }catch(HeadlessException e){
             JOptionPane.showMessageDialog(this,"Digite un valor valido");
         }
         NuevoCat();
@@ -721,9 +721,11 @@ public class frmPet extends javax.swing.JFrame {
                 clsDog Dog = new clsDog(code,name,bornYear,color,healtStatus,breed,pedigree);
                         dogObjectList.add(Dog);
                         this.FillJListDog();
+                        ctlPet.CreatePet(Dog);
                         JOptionPane.showMessageDialog(this,"Registro Guardado");
+                        
             }
-        }catch(Exception e){
+        }catch(HeadlessException e){
             JOptionPane.showMessageDialog(this,"Digite un valor valido");
         }
         NuevoDog();
@@ -734,34 +736,20 @@ public class frmPet extends javax.swing.JFrame {
         try{
     
             String code=txtcodeDog.getText();
-
+            clsDog dog= (clsDog) ctlPet.searchPet(code, "Perro");
             if (code.equals("")){
                 
                 //JOptionPane.showMessageDialog(this, "Por favor ingrese un codigo");
 
             }else{
-                boolean found=false;
-                for (clsDog dog : dogObjectList){
-                
-                    if(dog.getCode().equals(code)){
-                    
-                        JOptionPane.showMessageDialog(this, "Bienvenido "+dog.getName());
-                        
+
                         txtNameDog.setText(dog.getName());
                         txtColorDog.setText(dog.getColor());
                         txtBronYearDog.setText (Integer.toString(dog.getBorn_year()));
                         CbBreedDog.setSelectedItem(dog.getBreed());
                         CbHealthStatusDog.setSelectedItem(dog.getHealthStatus());
                         ChekPedigreeDog.setSelected(dog.getPedigree());
-                        found=true;
-                        break;
                         
-                    }
-                
-                }
-                if(!found){
-                    JOptionPane.showMessageDialog(this,"Codigo no encontrado");
-                }
             }
         }catch(Exception e){
         
@@ -772,41 +760,27 @@ public class frmPet extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarDogActionPerformed
 
     private void EditarDogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarDogActionPerformed
-       try{
-            String code = txtcodeDog.getText();
-            String name = txtNameDog.getText();
-            String color = txtColorDog.getText();
-            int bornYear = Integer.parseInt(txtBronYearDog.getText());
-            String breed = CbBreedDog.getSelectedItem().toString();
-            String healtStatus = CbHealthStatusDog.getSelectedItem().toString();
+     
+                    try{
+            String code= txtcodeDog.getText();
+            String name= txtNameDog.getText();
+            String color= txtColorDog.getText();
+            int bornYear=Integer.parseInt(txtBronYearDog.getText());
+            String breed= CbBreedDog.getSelectedItem().toString();
+            String health=CbHealthStatusDog.getSelectedItem().toString();
             boolean pedigree = ChekPedigreeDog.isSelected();
-            
-            
-            if(code.equals("")||name.equals("")||color.equals("")){
-                JOptionPane.showMessageDialog(this,"Porfavor llene todos los campos");
+            if(breed.equals("")|| name.equals("")||color.equals("")){
+                JOptionPane.showMessageDialog(this, "Por favor llene todos los campos");
             }else{
-                for (clsDog dog : dogObjectList){
-                
-                    if(dog.getCode().equals(code)){
-                    
-                        dog.setName(name);
-                        dog.setColor(color);
-                        dog.setBreed(breed);
-                        dog.setBorn_year(bornYear);
-                        dog.setHealthStatus(healtStatus);
-                        dog.setPedigree(pedigree);
-                        FillJListDog();
-                        JOptionPane.showMessageDialog(this,"Registro actualizado");
-                        break;
-                        
-                    }
-                
-                }
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Digite un valor valido");
+                    clsDog dog= new clsDog(code,name,bornYear,color,health,breed,pedigree);
+                    ctlPet.EditPet(dog);
+                    FillJListDog();
+                    NuevoDog();
+                    JOptionPane.showMessageDialog(this,"Mascota actualizada");
         }
-        NuevoDog();
+        }catch(Exception e){    
+        JOptionPane.showMessageDialog(this,"Digite un valor valido");
+        }
     }//GEN-LAST:event_EditarDogActionPerformed
 
     private void CbHealthStatusCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbHealthStatusCatActionPerformed
@@ -814,29 +788,24 @@ public class frmPet extends javax.swing.JFrame {
     }//GEN-LAST:event_CbHealthStatusCatActionPerformed
 
     private void EliminarDogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarDogActionPerformed
-        try{
+     try{
             String code=txtcodeDog.getText();
-            if(code.equals("")){
-            JOptionPane.showMessageDialog(this, "Por favot ingrese un codigo");
-            }else{
-                boolean found=false;
-                for (clsDog dog:dogObjectList ){
-                if(dog.getCode().equals(code)){
-                    dogObjectList.remove(dog);
-                    FillJListDog();
-                    JOptionPane.showMessageDialog(this,"Registro eliminado");
-                    found=true;
-                    break;
+        if(code.equals("")) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese codigo");
+        } else {
+            boolean found=false; 
+            found=ctlPet.DeletePet(code,"Perro");
+            this.FillJListDog();
+            FillJListDog();
+            JOptionPane.showMessageDialog(this, "Mascota Eliminada");
+            if(!found){
+                JOptionPane.showMessageDialog(this,"Codigo no encontrado");
             }
-            }
-                if(!found){
-                    JOptionPane.showMessageDialog(this,"Codigo no encontrado");
-                }
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Digite un valor valido");
         }
-        NuevoDog();
+        }catch(Exception e){    
+        JOptionPane.showMessageDialog(this,"Digite un valor valido");
+        }
+    NuevoDog();
     }//GEN-LAST:event_EliminarDogActionPerformed
 
     private void EliminaCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminaCatActionPerformed
@@ -859,7 +828,7 @@ public class frmPet extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,"Codigo no encontrado");
                 }
             }
-        }catch(Exception e){
+        }catch(HeadlessException e){
             JOptionPane.showMessageDialog(this,"Digite un valor valido");
         }
         NuevoDog();
@@ -907,6 +876,8 @@ public class frmPet extends javax.swing.JFrame {
         CbHealthStatusCat.setSelectedItem("Seleccionar");
             }
 
+    
+    
     
     /**
      * @param args the command line arguments

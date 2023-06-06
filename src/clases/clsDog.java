@@ -5,10 +5,13 @@ public class clsDog extends clsPet{
      private String breed;
      private boolean Pedigree;
 
+    public clsDog() {
+    }
+
 
     //constructor con  los elementos de la superclase
     public clsDog(String code, String name, int born_year, String color, String healthStatus, String breed, boolean Pedigree) {
-        super(code, name, born_year, color, healthStatus);
+        super(code, name, born_year, color, healthStatus,breed);
         this.breed = breed;
         this.Pedigree = Pedigree;
     }
@@ -54,11 +57,15 @@ public class clsDog extends clsPet{
     }
     @Override
     public String getAnimalType() {
-        return "Domestico";
+        return "Perro";
     }
 
     @Override
     public int getNumberOfBones() {
         return 321;
+    }
+
+    public int getbornYear() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

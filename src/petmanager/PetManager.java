@@ -1,8 +1,8 @@
 package petmanager;
 
 import clases.clsPet;
-import clases.clsVeterinary;
-import java.util.Date;
+//import clases.clsVeterinary;
+//import java.util.Date;
 
 public class PetManager {
     public static void main(String[] args) {
@@ -17,27 +17,27 @@ public class PetManager {
        
        
         /*datos pet2*/
-        clsPet pet2=new clsPet("1","Zeus",2021,"cafe","Malito");
+        //clsPet pet2=new clsPet("1","Zeus",2021,"cafe","Malito");
         
         /*extraer el año*/
-        Date current_date=new Date();
-        int current_year=current_date.getYear();
+        //Date current_date=new Date();
+        //int current_year=current_date.getYear();
         
         
-        int agePet1=pet1.getBorn_year()-current_year;
-        int agePet2=pet2.getBorn_year()-current_year;
+        //int agePet1=pet1.getBorn_year()-current_year;
+        //int agePet2=pet2.getBorn_year()-current_year;
         /*condicion para comparar las edades*/
-        if(agePet1>agePet2){
+        //if(agePet1>agePet2){
             
-            System.out.println(pet1.getName()+" es menor que "+pet2.getName());
+            //System.out.println(pet1.getName()+" es menor que "+pet2.getName());
             
-        }else if(agePet1<agePet2){
+        //}else if(agePet1<agePet2){
             
-            System.out.println(pet1.getName()+" es mayor que "+pet2.getName());
+            //System.out.println(pet1.getName()+" es mayor que "+pet2.getName());
             
-        }else{
+        //}else{
             
-            System.out.println( " las dos mascotas tienen la misma edad");
+            //System.out.println( " las dos mascotas tienen la misma edad");
             
         }
         
@@ -47,4 +47,4 @@ public class PetManager {
         
         
     }
-}
+
